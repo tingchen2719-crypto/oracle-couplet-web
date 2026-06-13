@@ -57,7 +57,6 @@ ORACLE_FONT_MAP = {
     "綿": "cotton.png","葉": "leaf.png","近": "close.png","悅": "joy.png","闔": "entirefamily.png","𰻞": "1u;6.jpg",
     "三": "three.png","羊": "sheep.png","陽": "sun.png","回": "back.png","百": "hundred.png","洋": "foreign.png",
     "得": "get.png","揚": "raise.png","眉": "eyebrow.png","吐": "vomit.png","餐": "meal.png","奔": "run.png","繡": "sew.png"
-    # ... 請在此處保留你原本長長的字體清單 ...
 }
 
 def remove_white_background(img, threshold=220):
@@ -153,7 +152,7 @@ HTML_TEMPLATE = """
 <body>
     <h1>🏮 古漢字春聯線上產生器 🏮</h1>
     <form action="/generate" method="get">
-        <input type="text" name="text" placeholder="請輸入春聯文字 (如: 新年快樂)" required>
+        <input type="text" name="text" placeholder="請輸入想要生成的文字(輸入1個字為斗方)" required>
         <button type="submit">生成春聯</button>
     </form>
 </body>
