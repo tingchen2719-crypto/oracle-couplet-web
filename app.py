@@ -142,7 +142,7 @@ HTML_TEMPLATE = """
 <!DOCTYPE html>
 <html>
 <head>
-    <title>甲骨文春聯產生器</title>
+    <title>古漢字春聯產生器</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; background-color: #f7f7f7; }
@@ -151,7 +151,7 @@ HTML_TEMPLATE = """
     </style>
 </head>
 <body>
-    <h1>🏮 甲骨文春聯線上產生器 🏮</h1>
+    <h1>🏮 古漢字春聯線上產生器 🏮</h1>
     <form action="/generate" method="get">
         <input type="text" name="text" placeholder="請輸入春聯文字 (如: 新年快樂)" required>
         <button type="submit">生成春聯</button>
