@@ -170,7 +170,7 @@ def generate():
     if img:
         # 將 PIL 圖片轉成記憶體中的二進位檔案，直接傳送給瀏覽器顯示
         img_io = io.BytesIO()
-        img.convert("RGB").save(img_io, 'PNG')
+        img.convert("RGBA").save(img_io, 'PNG')
         img_io.seek(0)
         return send_file(img_io, mimetype='image/png')
     return "生成失敗，請檢查輸入的字是否有在字典中！"
