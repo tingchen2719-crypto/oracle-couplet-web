@@ -152,7 +152,7 @@ HTML_TEMPLATE = """
 <body>
     <h1>🏮 古漢字春聯線上產生器 🏮</h1>
     <form action="/generate" method="get">
-        <input type="text" name="text" placeholder="請輸入想要生成的文字(輸入1個字為斗方)" required>
+        <input type="text" name="text" placeholder="請輸入中文(一或四字)" required>
         <button type="submit">生成春聯</button>
     </form>
 </body>
