@@ -136,7 +136,7 @@ def generate_oracle_couplet(text):
                     pass
     return couplet
 
-# 🌐 網頁路由設定：首頁畫面 (簡單的輸入框)
+# 🌐 網頁路由設定：首頁畫面
 HTML_TEMPLATE = """
 <!DOCTYPE html>
 <html>
@@ -166,16 +166,28 @@ def index():
 @app.route('/generate')
 def generate():
     user_input = request.args.get('text', '').strip()
+    
+    # 💡 檢查是否有字不在字典裡
+    has_missing = any(char not in ORACLE_FONT_MAP for char in user_input)
+    
+    if has_missing:
+        # 💡 直接讀取你準備好的 error.png
+        error_path = os.path.join(BASE_DIR, "error.png")
+        if os.path.exists(error_path):
+            return send_file(error_path, mimetype='image/png')
+        else:
+            return "查無此字（且找不到錯誤提示圖片 error.png），請檢查專案目錄！"
+            
+    # 如果都有，正常產圖
     img = generate_oracle_couplet(user_input)
     if img:
-        # 將 PIL 圖片轉成記憶體中的二進位檔案，直接傳送給瀏覽器顯示
         img_io = io.BytesIO()
         img.convert("RGBA").save(img_io, 'PNG')
         img_io.seek(0)
         return send_file(img_io, mimetype='image/png')
-    return "生成失敗，請檢查輸入的字是否有在字典中！"
+        
+    return "生成失敗，請再試一次！"
 
-# ⚠️ Render 部署關鍵：動態綁定 Port
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
